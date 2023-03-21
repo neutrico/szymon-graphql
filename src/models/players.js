@@ -1,9 +1,10 @@
 import mongoose from "mongoose";
 
-export const Player = mongoose.model("Player", {
+const PlayerSchema = new mongoose.Schema({
   player_id: Number,
   name: String,
-  current_club_id: Number,
+  // current_club_id: Number,
+  current_club_id: { type: mongoose.Schema.Types.ObjectId, ref: 'Club' },
   current_club_name: String,
   country_of_citizenship: String,
   country_of_birth: String,
@@ -25,3 +26,5 @@ export const Player = mongoose.model("Player", {
   last_season: Number,
   url: String,
 });
+
+export const PlayerModel = mongoose.model("Player", PlayerSchema);

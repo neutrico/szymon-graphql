@@ -1,6 +1,6 @@
 import mongoose from "mongoose";
 
-export const Club = mongoose.model("Club", {
+const ClubSchema = new mongoose.Schema({
   club_id: String,
   club_code: String,
   name: String,
@@ -17,3 +17,5 @@ export const Club = mongoose.model("Club", {
   coach_name: String,
   url: String,
 });
+
+export const ClubModel = mongoose.model("Club", ClubSchema);
