@@ -1,15 +1,22 @@
 export const resolvers = {
   Query: {
-    getMovies: async (_, _args, { dataSources: { movies } }) => {
-      return movies.getMovies();
+    getClubs: async (_, _args, { dataSources: { clubs } }) => {
+      return clubs.getClubs();
     },
-    getMovie: async (_, { id }, { dataSources: { movies } }) => {
-      return movies.getMovie(id);
-    }
-  },
-  Mutation: {
-    createMovie: async (_, args, { dataSources: { movies } }) => {
-      return movies.createMovie(args)
+    getClub: async (_, { id }, { dataSources: { clubs } }) => {
+      return clubs.getClub(id);
+    },
+    getPlayers: async (_, _args, { dataSources: { players } }) => {
+      return players.getPlayers();
+    },
+    getPlayer: async (_, { id }, { dataSources: { players } }) => {
+      return players.getPlayer(id);
+    },
+    getPlayerValuations: async (_, _args, { dataSources: { playerValuations } }) => {
+      return playerValuations.getPlayerValuations();
+    },
+    getPlayerValuation: async (_, { id }, { dataSources: { playerValuations } }) => {
+      return playerValuations.getPlayerValuation(id);
     }
   }
 }

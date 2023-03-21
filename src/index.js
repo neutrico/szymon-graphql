@@ -4,8 +4,12 @@ import { ApolloServer } from 'apollo-server';
 
 import { typeDefs } from './typeDefs';
 import { resolvers } from './resolvers';
-import { Movie as MovieModel } from './models/movie';
-import Movies from './dataSources/movies';
+import { Player as PlayerModel } from './models/players';
+import { PlayerValuation as PlayerValuationModel } from './models/playerValuations';
+import { Club as ClubModel } from './models/clubs';
+import Clubs from './dataSources/clubs';
+import Players from './dataSources/players';
+import PlayerValuations from './dataSources/playerValuations';
 
 const uri = process.env.MONGODB_URI
 const main = async () => {
@@ -17,7 +21,9 @@ main()
   .catch(error => console.error(error));
 
 const dataSources = () => ({
-  movies: new Movies(MovieModel),
+  clubs: new Clubs(ClubModel),
+  playerValuations: new PlayerValuations(PlayerValuationModel),
+  players: new Players(PlayerModel),
 });
 
 const server = new ApolloServer({ typeDefs, resolvers, dataSources })
